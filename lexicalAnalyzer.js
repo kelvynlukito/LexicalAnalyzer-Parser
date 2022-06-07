@@ -354,10 +354,16 @@ const lexicalAnalyzer = () =>{
     var idx_char = 0;
     var state = 'q0';
     var current_token = '';
-    while (state !== 'accept'){
+    while (state !== "ACCEPT"){
         var current_char = text[idx_char];
         current_token += current_char;
         state = transition_list[(state, current_char)];
+        if (state === "q25"){
+            document.getElementById("current-token").innerHTML = `Current Token: ${current_token} valid`;
+        }
+        if (state === "q52"){
+            document.getElementById("current-token").innerHTML = `Current Token: ${current_token} valid`;
+        }
         if (state === "q58"){
             document.getElementById("current-token").innerHTML = `Current Token: ${current_token} valid`;
         }
@@ -367,7 +373,7 @@ const lexicalAnalyzer = () =>{
         }
         idx_char = idx_char + 1;
     }
-    if (state === "accept"){
+    if (state === "ACCEPT"){
         document.getElementById("result-lexical").innerHTML = `Semua Token di Input: ${inputValue} valid`;
     } 
   }
