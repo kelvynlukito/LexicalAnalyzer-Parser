@@ -32,6 +32,158 @@ for (var state, _pj_c = 0, _pj_a = state_list, _pj_b = _pj_a.length; _pj_c < _pj
     transition_list[[state, " "]] = "error";
   }
 
+// Symbol Definition
+/* 
+  S = Terminal
+  SA = SUBJECT
+  VB = VERB
+  OB = OBJECT
+*/
+var non_terminals,terminals,parse_tabel
+non_terminals = ["S","SA","VB","OB"]
+terminals = ["vater","mutter","bruder","er","ich","sie","onkel","tante","wir","du",
+             "lessen","essen","sehen","benutzen","offen","ritten","finden","putzen","waschen","bekomen",
+             "physik","fleisch","konzert","kleid","schuh","waschen","wagen","Lebensmittel","flugzeug","geld"]
+
+// Parse Tabel Definition
+parse_tabel = {}
+
+parse_tabel[["S", "vater"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "mutter"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "bruder"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "er"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "ich"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "sie"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "onkel"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "tante"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "wir"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "du"]] = ["SA", "VB", "OB"];
+
+parse_tabel[["S", "lessen"]] = ["error"];
+parse_tabel[["S", "essen"]] = ["error"];
+parse_tabel[["S", "sehen"]] = ["error"];
+parse_tabel[["S", "benutzen"]] = ["error"];
+parse_tabel[["S", "offen"]] = ["error"];
+parse_tabel[["S", "ritten"]] = ["error"];
+parse_tabel[["S", "finden"]] = ["error"];
+parse_tabel[["S", "putzen"]] = ["error"];
+parse_tabel[["S", "waschen"]] = ["error"];
+parse_tabel[["S", "bekomen"]] = ["error"];
+
+parse_tabel[["S", "physik"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "fleisch"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "konzert"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "kleid"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "schuh"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "waschen"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "wagen"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "lebensmittel"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "flugzeug"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "geld"]] = ["SA", "VB", "OB"];
+parse_tabel[["S", "EOS"]] = ["error"];
+
+parse_tabel[["SA", "vater"]] = ["vater"];
+parse_tabel[["SA", "mutter"]] = ["mutter"];
+parse_tabel[["SA", "bruder"]] = ["bruder"];
+parse_tabel[["SA", "er"]] = ["er"];
+parse_tabel[["SA", "ich"]] = ["ich"];
+parse_tabel[["SA", "sie"]] = ["sie"];
+parse_tabel[["SA", "onkel"]] = ["onkel"];
+parse_tabel[["SA", "tante"]] = ["tante"];
+parse_tabel[["SA", "wir"]] = ["wir"];
+parse_tabel[["SA", "du"]] = ["du"];
+
+parse_tabel[["SA", "lessen"]] = ["error"];
+parse_tabel[["SA", "essen"]] = ["error"];
+parse_tabel[["SA", "sehen"]] = ["error"];
+parse_tabel[["SA", "benutzen"]] = ["error"];
+parse_tabel[["SA", "offen"]] = ["error"];
+parse_tabel[["SA", "ritten"]] = ["error"];
+parse_tabel[["SA", "finden"]] = ["error"];
+parse_tabel[["SA", "putzen"]] = ["error"];
+parse_tabel[["SA", "waschen"]] = ["error"];
+parse_tabel[["SA", "bekomen"]] = ["error"];
+
+parse_tabel[["SA", "physik"]] = ["error"];
+parse_tabel[["SA", "fleisch"]] = ["error"];
+parse_tabel[["SA", "konzert"]] = ["error"];
+parse_tabel[["SA", "kleid"]] = ["error"];
+parse_tabel[["SA", "schuh"]] = ["error"];
+parse_tabel[["SA", "waschen"]] = ["error"];
+parse_tabel[["SA", "wagen"]] = ["error"];
+parse_tabel[["SA", "lebensmittel"]] = ["error"];
+parse_tabel[["SA", "flugzeug"]] = ["error"];
+parse_tabel[["SA", "geld"]] = ["error"];
+parse_tabel[["SA", "EOS"]] = ["error"];
+
+parse_tabel[["VB", "vater"]] = ["error"];
+parse_tabel[["VB", "mutter"]] = ["error"];
+parse_tabel[["VB", "bruder"]] = ["error"];
+parse_tabel[["VB", "er"]] = ["error"];
+parse_tabel[["VB", "ich"]] = ["error"];
+parse_tabel[["VB", "sie"]] = ["error"];
+parse_tabel[["VB", "onkel"]] = ["error"];
+parse_tabel[["VB", "tante"]] = ["error"];
+parse_tabel[["VB", "wir"]] = ["error"];
+parse_tabel[["VB", "du"]] = ["error"];
+
+parse_tabel[["VB", "lessen"]] = ["lessen"];
+parse_tabel[["VB", "essen"]] = ["essen"];
+parse_tabel[["VB", "sehen"]] = ["sehen"];
+parse_tabel[["VB", "benutzen"]] = ["benutzen"];
+parse_tabel[["VB", "offen"]] = ["offen"];
+parse_tabel[["VB", "ritten"]] = ["ritten"];
+parse_tabel[["VB", "finden"]] = ["finden"];
+parse_tabel[["VB", "putzen"]] = ["putzen"];
+parse_tabel[["VB", "waschen"]] = ["waschen"];
+parse_tabel[["VB", "bekomen"]] = ["bekomen"];
+
+parse_tabel[["VB", "physik"]] = ["error"];
+parse_tabel[["VB", "fleisch"]] = ["error"];
+parse_tabel[["VB", "konzert"]] = ["error"];
+parse_tabel[["VB", "kleid"]] = ["error"];
+parse_tabel[["VB", "schuh"]] = ["error"];
+parse_tabel[["VB", "waschen"]] = ["error"];
+parse_tabel[["VB", "wagen"]] = ["error"];
+parse_tabel[["VB", "lebensmittel"]] = ["error"];
+parse_tabel[["VB", "flugzeug"]] = ["error"];
+parse_tabel[["VB", "geld"]] = ["error"];
+parse_tabel[["VB", "EOS"]] = ["error"];
+
+parse_tabel[["OB", "vater"]] = ["error"];
+parse_tabel[["OB", "mutter"]] = ["error"];
+parse_tabel[["OB", "bruder"]] = ["error"];
+parse_tabel[["OB", "er"]] = ["error"];
+parse_tabel[["OB", "ich"]] = ["error"];
+parse_tabel[["OB", "sie"]] = ["error"];
+parse_tabel[["OB", "onkel"]] = ["error"];
+parse_tabel[["OB", "tante"]] = ["error"];
+parse_tabel[["OB", "wir"]] = ["error"];
+parse_tabel[["OB", "du"]] = ["error"];
+
+parse_tabel[["OB", "lessen"]] = ["error"];
+parse_tabel[["OB", "essen"]] = ["error"];
+parse_tabel[["OB", "sehen"]] = ["error"];
+parse_tabel[["OB", "benutzen"]] = ["error"];
+parse_tabel[["OB", "offen"]] = ["error"];
+parse_tabel[["OB", "ritten"]] = ["error"];
+parse_tabel[["OB", "finden"]] = ["error"];
+parse_tabel[["OB", "putzen"]] = ["error"];
+parse_tabel[["OB", "waschen"]] = ["error"];
+parse_tabel[["OB", "bekomen"]] = ["error"];
+
+parse_tabel[["OB", "physik"]] = ["physik"];
+parse_tabel[["OB", "fleisch"]] = ["fleisch"];
+parse_tabel[["OB", "konzert"]] = ["konzert"];
+parse_tabel[["OB", "kleid"]] = ["kleid"];
+parse_tabel[["OB", "schuh"]] = ["schuh"];
+parse_tabel[["OB", "waschen"]] = ["waschen"];
+parse_tabel[["OB", "wagen"]] = ["wagen"];
+parse_tabel[["OB", "lebensmittel"]] = ["lebensmittel"];
+parse_tabel[["OB", "flugzeug"]] = ["flugzeug"];
+parse_tabel[["OB", "geld"]] = ["geld"];
+parse_tabel[["OB", "EOS"]] = ["error"];
+
 
 // space before input string
 transition_list[["q1", " "]] = "q1";
@@ -351,6 +503,7 @@ transition_list[["q58", "#"]] = "ACCEPT";
 
 
 const lexicalAnalyzer = () =>{
+    var token1,token2,token3
     var idx_char = 0;
     var state = "q0";
     var current_token = '';
@@ -359,15 +512,18 @@ const lexicalAnalyzer = () =>{
         current_token += current_char;
         state = transition_list[(state, current_char)];
         if (state === "q25"){
-            document.querySelector("#current-token").innerHTML = `Current Token: ${current_token} valid`;
+            token1 = current_token;
+            document.querySelector("#token1").innerHTML = `Current Token: ${current_token} valid`;
             //print("current token: ",current_token)
         }
         if (state === "q52"){
-            document.querySelector("#current-token").innerHTML = `Current Token: ${current_token} valid`;
+            token2 = current_token;
+            document.querySelector("#token2").innerHTML = `Current Token: ${current_token} valid`;
             //print("current token: ",current_token)
         }
         if (state === "q58"){
-            document.querySelector("#current-token").innerHTML = `Current Token: ${current_token} valid`;
+            token3 = current_token
+            document.querySelector("#token3").innerHTML = `Current Token: ${current_token} valid`;
             //print("current token: ",current_token)
         }
         if (state === "error"){
@@ -380,6 +536,67 @@ const lexicalAnalyzer = () =>{
     if (state === "ACCEPT"){
         document.querySelector("#result-lexical").innerHTML = `Semua Token di Input: ${inputValue} valid`;
         //print("Semua Token di Input: ",inputValue,"valid")
-    } 
-  }
+    }
 
+    // Initilization stack for parser
+    var parse_stack
+    parse_stack =[]
+    parse_stack.push("#")
+    parse_stack.push("S")
+    // parsing process
+    var idx_token,symbol
+    idx_token = 0
+    symbol = tokens[idx_token]
+
+    while (length(parse_stack) > 0){
+        var top = parse_stack[length(parse_stack)-1];
+        console.log('top= ',top);
+        console.log('symbol= ',symbol);
+        for (let i=0;i<length(terminals);i++){
+            if (terminals[i]==top){
+                console.log("Top adalah simbol terminal");
+                if (top===symbol){
+                    parse_stack.pop();
+                    idx_token += 1;
+                    symbol = tokens[idx_token];
+                    if (symbol==="EOS"){
+                        console.log("isi stack :",parse_stack);
+                        parse_stack.pop();
+                    }
+                } else { 
+                    console.log("error");
+                    break;
+                }
+            }
+        } 
+        for (let j=0;j<length(non_terminals);j++){
+            if (top===non_terminals[j]){
+                console.log("Top adalah simbol terminal");
+                if (parse_tabel[[top,symbol]][0]!=="error"){
+                    parse_stack.pop();
+                    var symbol_to_be_pushed = parse_tabel[[top,symbol]];
+                    for (var i = symbol_to_be_pushed.length - 1, _pj_a = -1; i < _pj_a; i += -1) {
+                        parse_stack.push(symbol_to_be_pushed[i]);
+                    }
+                } else {
+                    console.log("error");
+                    break;
+                }
+
+            } else {
+                console.log("error");
+                break;
+            }
+            console.log("Isi Stack : ", parse_stack);
+            console.log();
+        } 
+    }
+    // conslusion
+    console.log();
+    if (symbol==="EOS" && length(parse_stack)===0){
+        console.log(`Input Value: ${inputValue} diterima, Aturan sesuai grammar`);
+        document.querySelector("#result-parser").innerHTML =`Input Value: ${inputValue} diterima, Aturan sesuai grammar`;
+    } else {
+        document.querySelector("#result-parser").innerHTML =`Input Value: ${inputValue} tidak diterima, Aturan tidak sesuai grammar`;
+    }
+  }
