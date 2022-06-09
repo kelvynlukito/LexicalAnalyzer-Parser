@@ -1,5 +1,5 @@
 // Input Sentence User
-var inputValue = document.getElementById("inputlexical") 
+var inputValue = document.querySelector("#inputValue").value;
 text = inputValue.toLowerCase()+"#";
 
 // Initialization
@@ -19,7 +19,7 @@ state_list =["q1","q2","q3","q4","q5","q6","q7","q8","q9","q10","q11","q12","q13
 */
 
 transition_list = {}
-/*
+
 for (var state, _pj_c = 0, _pj_a = state_list, _pj_b = _pj_a.length; _pj_c < _pj_b; _pj_c += 1) {
     state = _pj_a[_pj_c];
   
@@ -31,7 +31,7 @@ for (var state, _pj_c = 0, _pj_a = state_list, _pj_b = _pj_a.length; _pj_c < _pj
     transition_list[[state, "#"]] = "error";
     transition_list[[state, " "]] = "error";
   }
-*/
+
 
 // space before input string
 transition_list[["q1", " "]] = "q1";
@@ -352,29 +352,34 @@ transition_list[["q58", "#"]] = "ACCEPT";
 
 const lexicalAnalyzer = () =>{
     var idx_char = 0;
-    var state = 'q0';
+    var state = "q0";
     var current_token = '';
     while (state !== "ACCEPT"){
         var current_char = text[idx_char];
         current_token += current_char;
         state = transition_list[(state, current_char)];
         if (state === "q25"){
-            document.getElementById("current-token").innerHTML = `Current Token: ${current_token} valid`;
+            document.querySelector("#current-token").innerHTML = `Current Token: ${current_token} valid`;
+            //print("current token: ",current_token)
         }
         if (state === "q52"){
-            document.getElementById("current-token").innerHTML = `Current Token: ${current_token} valid`;
+            document.querySelector("#current-token").innerHTML = `Current Token: ${current_token} valid`;
+            //print("current token: ",current_token)
         }
         if (state === "q58"){
-            document.getElementById("current-token").innerHTML = `Current Token: ${current_token} valid`;
+            document.querySelector("#current-token").innerHTML = `Current Token: ${current_token} valid`;
+            //print("current token: ",current_token)
         }
         if (state === "error"){
-            document.getElementById("result-lexical").innerHTML = "error";
+            document.querySelector("#result-lexical").innerHTML = "error";
+            //print("error")
             break;
         }
         idx_char = idx_char + 1;
     }
     if (state === "ACCEPT"){
-        document.getElementById("result-lexical").innerHTML = `Semua Token di Input: ${inputValue} valid`;
+        document.querySelector("#result-lexical").innerHTML = `Semua Token di Input: ${inputValue} valid`;
+        //print("Semua Token di Input: ",inputValue,"valid")
     } 
   }
 

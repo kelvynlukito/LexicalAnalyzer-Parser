@@ -1,3 +1,6 @@
+*{
+    font-family: poppins;
+}
 .card {
     margin: auto;
     margin-top: 50px;
@@ -9,5 +12,24 @@
 
 .card-lexical h5{
     font-weight: bold;
+}
+
+#button-primary{
+    background-color: rgb(55, 101, 250);
+    padding: 12px 20px 12px 20px;
+    color: white;
+    font-family: poppins;
+    border-radius: 5px;
+    border-width: none;
+    width: 38rem;
+}
+
+#inputValue{
+    border-radius: 5px;
+    padding: 10px 20px 10px 20px;
+    border-width: 2px;
+    border-color: grey;
+    width: 38rem;
+    margin-bottom: 12px;
 }
 

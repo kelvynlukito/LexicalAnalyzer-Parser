@@ -12,13 +12,13 @@
 <body>
     <div class="card card-lexical main-card" style="width: 40rem;">
         <div class="card-body">
-          <h5 class="card-title">lexical Analyzer</h5>
+          <h5 class="card-title">lexical Analyzer & Parser</h5>
           <p class="card-text">This Section is the lexical Analyzer. Fill the form with 3 words according to SVO rules</p>
           <form>
-            <div class="input-group mb-3">
-                <input id="inputlexical" type="text" class="form-control" >
-            </div>              
-            <button type="button" class="btn btn-primary" onclick="lexicalAnalyzer()">Submit</button>
+            <input id="inputValue" type="text" placeholder="Subject Verb Object" >             
+            <button id="button-primary" type="button" onclick="lexicalAnalyzer()"> 
+               Submit
+            </button>
           </form>
           <div class="alert alert-primary" role="alert" style="margin-top: 10px;">
             <p id="current-token">
@@ -28,26 +28,9 @@
               The Answer Will be Here
             </p>
           </div>
-          
         </div>
     </div>
-    <div class="card card-parser main-card" style="width: 40rem;">
-        <div class="card-body">
-          <h5 class="card-title">Parser</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <form>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" id="input-parser" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-            </div>              
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-          <div class="alert alert-primary" role="alert" style="margin-top: 10px;">
-            <p>The Answer Will be Here</p>
-            <p id="result-parser"></p>
-          </div>
-        </div>
-    </div>
-    <script src="./lexicalAnalyzer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="./lexicalAnalyzer.js"></script>
 </body>
 </html>
