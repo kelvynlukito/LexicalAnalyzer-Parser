@@ -1,7 +1,3 @@
-// Input Sentence User
-var inputValue = document.querySelector("#inputValue").value;
-text = inputValue.toLowerCase()+"#";
-
 // Initialization
 const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
@@ -25,7 +21,7 @@ for (var state, _pj_c = 0, _pj_a = state_list, _pj_b = _pj_a.length; _pj_c < _pj
   
     for (var alpa, _pj_f = 0, _pj_d = alphabet, _pj_e = _pj_d.length; _pj_f < _pj_e; _pj_f += 1) {
       alpa = _pj_d[_pj_f];
-      transisi_table[[state, alpa]] = "error";
+      transition_list[[state, alpa]] = "error";
     }
   
     transition_list[[state, "#"]] = "error";
@@ -503,7 +499,11 @@ transition_list[["q58", "#"]] = "ACCEPT";
 
 
 const lexicalAnalyzer = () =>{
-    var token1,token2,token3
+    // Input Sentence User
+    var inputValue = document.querySelector("#inputValue").value;
+    text = inputValue.toLowerCase()+"#";
+    var token1,token2,token3;
+    var result_lexical;
     var idx_char = 0;
     var state = "q0";
     var current_token = '';
@@ -513,29 +513,21 @@ const lexicalAnalyzer = () =>{
         state = transition_list[(state, current_char)];
         if (state === "q25"){
             token1 = current_token;
-            document.querySelector("#token1").innerHTML = `Current Token: ${current_token} valid`;
-            //print("current token: ",current_token)
         }
         if (state === "q52"){
             token2 = current_token;
-            document.querySelector("#token2").innerHTML = `Current Token: ${current_token} valid`;
-            //print("current token: ",current_token)
         }
         if (state === "q58"){
             token3 = current_token
-            document.querySelector("#token3").innerHTML = `Current Token: ${current_token} valid`;
-            //print("current token: ",current_token)
         }
         if (state === "error"){
-            document.querySelector("#result-lexical").innerHTML = "error";
-            //print("error")
+            result_lexical = "error";
             break;
         }
         idx_char = idx_char + 1;
     }
     if (state === "ACCEPT"){
-        document.querySelector("#result-lexical").innerHTML = `Semua Token di Input: ${inputValue} valid`;
-        //print("Semua Token di Input: ",inputValue,"valid")
+        result_lexical = "Valid"
     }
 
     // Initilization stack for parser
@@ -599,4 +591,19 @@ const lexicalAnalyzer = () =>{
     } else {
         document.querySelector("#result-parser").innerHTML =`Input Value: ${inputValue} tidak diterima, Aturan tidak sesuai grammar`;
     }
+
+    document.querySelector("#token1").innerHTML = `Current Token: ${token1} valid`;
+    //print("current token: ",current_token)
+    document.querySelector("#token2").innerHTML = `Current Token: ${token2} valid`;
+    //print("current token: ",current_token)
+    document.querySelector("#token3").innerHTML = `Current Token: ${token3} valid`;
+    //print("current token: ",current_token)
+    if (result_lexical==="error"){
+        document.querySelector("#result-lexical").innerHTML = result_lexical;
+        //print("error")
+    } else {
+        document.querySelector("#result-lexical").innerHTML = `Semua Token di Input: ${inputValue} ${result_lexical}`;
+        //print("Semua Token di Input: ",inputValue,"valid")
+    }
+    
   }
